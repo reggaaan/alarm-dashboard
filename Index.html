@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cainta Disaster Alert Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+<body>
+
+<h1>🌍 Cainta Disaster Alert System</h1>
+
+<div id="globalAlert" class="card">
+    <h2>🚨 GLOBAL ALERT LEVEL</h2>
+    <p id="alertLevel">Analyzing...</p>
+</div>
+
+<div class="card">
+    <h2>🌊 Flood Status</h2>
+    <p id="flood">Loading...</p>
+</div>
+
+<div class="card">
+    <h2>🔥 Fire Status</h2>
+    <p id="fire">Loading...</p>
+</div>
+
+<div class="card">
+    <h2>🌍 Earthquake Status</h2>
+    <p id="quake">Loading...</p>
+</div>
+
+<h2>Earthquake Map</h2>
+<div id="map" style="height: 400px;"></div>
+
+<p id="mapStatus">Loading map...</p>
+<div id="map"></div>
+
+<button onclick="triggerAlert()">Simulate Alert</button>
+
+<script src="script.js"></script>
+</body>
+</html>

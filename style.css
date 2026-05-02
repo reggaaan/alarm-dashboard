@@ -1,0 +1,30 @@
+body {
+    font-family: Arial;
+    text-align: center;
+    background: #f4f4f4;
+}
+
+.card {
+    display: inline-block;
+    width: 250px;
+    background: white;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.safe { color: green; font-weight: bold; }
+.warning { color: orange; font-weight: bold; }
+.danger { color: red; font-weight: bold; }
+
+#map {
+    margin: 20px;
+    border: 2px solid black;
+}
+
+#globalAlert {
+    width: 80%;
+    margin: 20px auto;
+    font-size: 24px;
+}
