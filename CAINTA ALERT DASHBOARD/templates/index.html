@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cainta Disaster Control Room</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<!-- LOGIN -->
+<div id="loginPage" class="login-container">
+
+    <div class="login-box">
+        <h1>🌍 Admin Login</h1>
+
+        <input id="username" placeholder="Username">
+        <input id="password" type="password" placeholder="Password">
+
+        <button onclick="login()">Login</button>
+
+        <p id="loginError"></p>
+    </div>
+
+</div>
+
+<!-- DASHBOARD WRAPPER -->
+<div id="dashboardSection" class="layout" style="display:none;">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+
+        <h2>🌍 Cainta Control</h2>
+        <p class="online">🟢 ONLINE</p>
+
+        <nav>
+            <p onclick="showSection('homePage')">🏠 Dashboard</p>
+            <p onclick="showSection('floodPage')">🌊 Flood</p>
+            <p onclick="showSection('firePage')">🔥 Fire</p>
+            <p onclick="showSection('quakePage')">🌍 Earthquake</p>
+            <p onclick="showSection('recipientPage')">👥 Recipients</p>
+            <p onclick="showSection('chatPage')">💬 Chat</p>
+            <p onclick="showSection('logsPage')">📜 Logs</p>
+        </nav>
+
+        <button class="logoutBtn" onclick="logout()">Logout</button>
+    </div>
+
+    <!-- MAIN -->
+    <div class="main">
+
+        <!-- HOME -->
+        <div id="homePage" class="page">
+            <h1>Disaster Dashboard</h1>
+
+            <div class="grid">
+
+                <div class="card">
+                    <h3>🌊 Flood</h3>
+                    <p id="flood">--</p>
+                </div>
+
+                <div class="card">
+                    <h3>🔥 Fire</h3>
+                    <p id="fire">--</p>
+                </div>
+
+                <div class="card">
+                    <h3>🌍 Earthquake</h3>
+                    <p id="quake">--</p>
+                </div>
+
+            </div>
+
+            <div class="card section">
+                <div id="map"></div>
+            </div>
+
+            <div class="card section">
+                <canvas id="chart"></canvas>
+            </div>
+        </div>
+
+        <!-- FLOOD -->
+        <div id="floodPage" class="page" style="display:none;">
+            <h1>🌊 Flood Control</h1>
+            <div class="card">
+                <h2 id="floodStatus">--</h2>
+                <p>Water: <span id="waterLevel"></span></p>
+                <p>Rain: <span id="rainLevel"></span></p>
+                <p>Risk: <span id="floodRisk"></span></p>
+            </div>
+        </div>
+
+        <!-- FIRE -->
+        <div id="firePage" class="page" style="display:none;">
+            <h1>🔥 Fire Control</h1>
+            <div class="card">
+                <h2 id="fireStatus">--</h2>
+                <p>Smoke: <span id="smokeLevel"></span></p>
+                <p>Temp: <span id="tempLevel"></span></p>
+                <p>Risk: <span id="fireRisk"></span></p>
+            </div>
+        </div>
+
+        <!-- QUAKE -->
+        <div id="quakePage" class="page" style="display:none;">
+            <h1>🌍 Earthquake Control</h1>
+            <div class="card">
+                <h2 id="quakeStatus">--</h2>
+                <p>Magnitude: <span id="magnitude"></span></p>
+                <p>Vibration: <span id="vibration"></span></p>
+                <p>Risk: <span id="quakeRisk"></span></p>
+            </div>
+        </div>
+
+        <!-- RECIPIENTS -->
+        <div id="recipientPage" class="page" style="display:none;">
+            <h1>👥 Recipients</h1>
+
+            <div class="card">
+                <input id="recipientName" placeholder="Name">
+                <input id="recipientRole" placeholder="Role">
+                <input id="recipientContact" placeholder="Contact">
+                <button onclick="addRecipient()">Add</button>
+            </div>
+
+            <div id="recipientList"></div>
+        </div>
+
+        <!-- CHAT -->
+        <div id="chatPage" class="page" style="display:none;">
+            <h1>💬 Chat</h1>
+
+            <div id="chatMessages" class="chatBox"></div>
+
+            <div class="chatInputArea">
+                <input id="chatName" placeholder="Name">
+                <input id="chatInput" placeholder="Message">
+                <button onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+
+        <!-- LOGS -->
+        <div id="logsPage" class="page" style="display:none;">
+            <h1>📜 Logs</h1>
+            <div id="logsContainer"></div>
+        </div>
+
+    </div>
+</div>
+
+<!-- ALERT -->
+<div id="alertPopup" class="alertPopup">
+    <h3>🚨 ALERT</h3>
+    <p id="alertMessage"></p>
+    <button onclick="closeAlert()">Close</button>
+</div>
+
+<footer class="footer">
+
+    <div class="footerContent">
+
+        <h3>🚨 Cainta Disaster Monitoring System</h3>
+
+        <p>Emergency Hotlines:</p>
+
+        <ul>
+            <li>📞 Cainta MDRRMO: 8682-xxxx</li>
+            <li>📞 Fire Department: 911</li>
+            <li>📞 Police: 911</li>
+        </ul>
+
+        <p class="small">
+            Real-time monitoring dashboard for flood, fire, and earthquake alerts.
+        </p>
+
+    </div>
+
+</footer>
+
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+
+</body>
+</html>
